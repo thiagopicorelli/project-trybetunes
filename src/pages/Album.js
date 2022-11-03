@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import getMusics from '../services/musicsAPI';
 import Loading from './Loading';
 import MusicCard from '../components/MusicCard';
+import { addSong } from '../services/favoriteSongsAPI';
 
 class Album extends Component {
   constructor() {
@@ -29,7 +30,9 @@ class Album extends Component {
         musicCards: musics.map((music, key) => (
           <MusicCard
             trackName={ music.trackName }
+            trackId={ music.trackId }
             previewUrl={ music.previewUrl }
+            onFavoriteChange={ this.onFavoriteChange }
             key={ key }
           />
         )),
@@ -37,6 +40,22 @@ class Album extends Component {
       }));
     });
   }
+
+  onFavoriteChange = (event) => {
+    const id = event.target.getAttribute('id');
+
+    this.setState((prevState) => ({
+      ...prevState,
+      isLoading: true,
+    }));
+
+    addSong(id).then(() => {
+      this.setState((prevState) => ({
+        ...prevState,
+        isLoading: false,
+      }));
+    });
+  };
 
   albumPage = () => {
     const { musicCards, artistName, albumName } = this.state;
