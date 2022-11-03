@@ -15,7 +15,7 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={ Login } />
-          <div>
+          <>
             <Header />
             <Route exact path="/search" component={ Search } />
             <Route exact path="/album/:id" component={ Album } />
@@ -23,7 +23,7 @@ class App extends React.Component {
             <Route exact path="/profile" component={ Profile } />
             <Route exact path="/profile/edit" component={ ProfileEdit } />
             <Route component={ NotFound } />
-          </div>
+          </>
         </Switch>
       </BrowserRouter>
     );

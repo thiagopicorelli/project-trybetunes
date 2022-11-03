@@ -17,3 +17,9 @@ code {
   display: flex;
   justify-content: center;
 }
+
+.music-card {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
