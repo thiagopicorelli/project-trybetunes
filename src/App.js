@@ -15,13 +15,15 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={ Login } />
-          <Header />
-          <Route exact path="/search" component={ Search } />
-          <Route exact path="/album/:id" component={ Album } />
-          <Route exact path="/favorites" component={ Favorites } />
-          <Route exact path="/profile" component={ Profile } />
-          <Route exact path="/profile/edit" component={ ProfileEdit } />
-          <Route component={ NotFound } />
+          <div>
+            <Header />
+            <Route exact path="/search" component={ Search } />
+            <Route exact path="/album/:id" component={ Album } />
+            <Route exact path="/favorites" component={ Favorites } />
+            <Route exact path="/profile" component={ Profile } />
+            <Route exact path="/profile/edit" component={ ProfileEdit } />
+            <Route component={ NotFound } />
+          </div>
         </Switch>
       </BrowserRouter>
     );
