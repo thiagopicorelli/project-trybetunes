@@ -1,11 +1,11 @@
 import { Component } from 'react';
 
 class Favorites extends Component {
-  render () {
+  render() {
     return (
       <div data-testid="page-favorites"></div>
     );
   }
-};
+}
 
 export default Favorites;

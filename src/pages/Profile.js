@@ -1,11 +1,11 @@
 import { Component } from 'react';
 
 class Profile extends Component {
-  render () {
+  render() {
     return (
       <div data-testid="page-profile"></div>
     );
   }
-};
+}
 
 export default Profile;

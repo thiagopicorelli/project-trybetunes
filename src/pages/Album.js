@@ -1,11 +1,11 @@
 import { Component } from 'react';
 
 class Album extends Component {
-  render () {
+  render() {
     return (
       <div data-testid="page-album"></div>
     );
   }
-};
+}
 
 export default Album;
