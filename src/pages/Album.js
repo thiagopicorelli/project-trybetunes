@@ -36,7 +36,9 @@ class Album extends Component {
         trackName={ music.trackName }
         trackId={ music.trackId }
         previewUrl={ music.previewUrl }
-        favorite={ this.favoriteSongs.includes(music.trackId.toString()) }
+        favorite={ this.favoriteSongs.find(
+          (song) => (song.trackId === music.trackId),
+        ) !== undefined }
         onFavoriteChange={ this.onFavoriteChange }
         key={ key }
       />
@@ -58,15 +60,19 @@ class Album extends Component {
   };
 
   updateMusicElementState = () => {
-    this.setState((prevState) => ({
-      ...prevState,
-      musicCards: this.musicCardsCreator(),
-      isLoading: false,
-    }));
+    getFavoriteSongs().then((favoriteSongs) => {
+      this.favoriteSongs = favoriteSongs;
+      this.setState((prevState) => ({
+        ...prevState,
+        musicCards: this.musicCardsCreator(),
+        isLoading: false,
+      }));
+    });
   };
 
   onFavoriteChange = (event) => {
     const id = event.target.getAttribute('id');
+    const song = this.musics.find((music) => (music.trackId === parseInt(id, 10)));
     const { checked } = event.target;
 
     this.setState((prevState) => ({
@@ -75,13 +81,11 @@ class Album extends Component {
     }));
 
     if (checked) {
-      addSong(id).then(() => {
-        this.favoriteSongs.push(id);
+      addSong(song).then(() => {
         this.updateMusicElementState();
       });
     } else {
-      removeSong(id).then(() => {
-        this.favoriteSongs.splice(this.favoriteSongs.indexOf(id), 1);
+      removeSong(song).then(() => {
         this.updateMusicElementState();
       });
     }
