@@ -65,7 +65,7 @@ class Favorites extends Component {
   render() {
     const { isLoading } = this.state;
     return (
-      <div data-testid="page-favorites">
+      <div data-testid="page-favorites" className="center">
         { isLoading ? <Loading /> : this.favoritesPage() }
       </div>
     );

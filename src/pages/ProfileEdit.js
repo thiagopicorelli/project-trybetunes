@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import Loading from './Loading';
 import { getUser, updateUser } from '../services/userAPI';
 
@@ -87,19 +89,19 @@ class ProfileEdit extends Component {
   profileEditPage = () => {
     const { name, email, image, description, cantSave } = this.state;
     return (
-      <div className="page-profile-edit">
-        <div>
+      <div className="page-profile-edit center">
+        <div className="profile-edit-input">
           Nome:
-          <input
+          <Form.Control
             data-testid="edit-input-name"
             idd="name"
             value={ name }
             onChange={ this.onInputChange }
           />
         </div>
-        <div>
+        <div className="profile-edit-input">
           E-mail:
-          <input
+          <Form.Control
             data-testid="edit-input-email"
             className="edit-input-email"
             type="email"
@@ -108,33 +110,34 @@ class ProfileEdit extends Component {
             onChange={ this.onInputChange }
           />
         </div>
-        <div>
+        <div className="profile-edit-input">
           Descrição:
-          <input
+          <Form.Control
             data-testid="edit-input-description"
-            type="textarea"
+            as="textarea"
+            rows={ 3 }
             idd="description"
             value={ description }
             onChange={ this.onInputChange }
           />
         </div>
-        <div>
-          Imagem:
-          <input
+        <div className="profile-edit-input">
+          Url do Avatar:
+          <Form.Control
             data-testid="edit-input-image"
             idd="image"
             value={ image }
             onChange={ this.onInputChange }
           />
         </div>
-        <button
-          type="button"
+        <Button
+          variant="primary"
           data-testid="edit-button-save"
           onClick={ this.saveProfile }
           disabled={ cantSave }
         >
           Salvar
-        </button>
+        </Button>
       </div>
     );
   };

@@ -12,14 +12,194 @@ code {
     monospace;
 }
 
-.loading {
+.center {
+  display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.loading {
+  height: 100%;
+}
+
+.header-component {
+  display: block;
+  height: 90px;
+  box-shadow: 5px 2px 8px 10px rgb(10,10,10, 0.1);
+  margin-bottom: 30px;
+}
+
+.header-section {
+  height: 100%;
+  background-color:#7CB9E8;
+}
+
+.header-user {
+  flex-basis: 250px;
+  flex-grow: 0;
+  background-color: white;
+  border-radius: 30px;
+  height: 80%;
+  margin-left: 5px;
+  box-shadow: 0px 2px 8px 2px rgb(10,10,10, 0.1);
+}
+
+.header-user-name {
+  width: 150px;
+  margin: 10px;
+  text-align: center;
+  text-overflow: wrap;
+  overflow: hidden;
+}
+
+.user-image {
+  display: flex;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: black;
+}
+
+.header-links {
   display: flex;
   justify-content: center;
+  flex-grow: 1;
+  margin-right: 250px;
+}
+
+.header-links button {
+  margin-left: 10px;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 20%;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px 2px rgb(10,10,10, 0.1);
+  background-color:#7CB9E8;
+}
+
+.login-input {
+  padding-bottom: 10px;
+}
+
+.page-search {
+  margin-top: 10px;
+  flex-direction: column;
+  width: 100%;
+}
+
+.search-box input {
+  margin-right: 10px;
+}
+
+.albums-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 1%;
+  width: 99%;
+}
+
+.albums-list-element {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
+  width: 150px;
+}
+
+.albums-list {
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.artist {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(97, 97, 243);
+}
+
+.album-image-big {
+  width: 50%;
+  margin-bottom: 10px;
+  box-shadow: 0px 10px 20px 0px rgb(10,10,10, 0.3);
+}
+
+.page-album-all {
+  padding: 10px;
+}
+
+.page-album {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.page-profile {
+  margin-top: 20px;
+  flex-direction: column;
+}
+
+.page-profile-user {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.page-profile-user-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px;
+}
+
+.page-profile-user-text span {
+  margin: 3px;
+}
+
+.user-image-big {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: black;
+}
+
+.page-profile-edit {
+  margin-top: 20px;
+  flex-direction: column;
+}
+
+.profile-edit-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  width: 50%;
 }
 
 .music-card {
   display: flex;
   flex-direction: column;
   margin: 10px;
+}
+
+.music-player {
+  display: flex;
+  align-items: center;
+}
+
+.music-player-favorite {
+  border-radius: 50px;
+  margin-left: 10px;
+  width: 42px;
+  height: 42px;
 }

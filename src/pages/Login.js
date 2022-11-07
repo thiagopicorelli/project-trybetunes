@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
 
@@ -48,28 +50,28 @@ class Login extends Component {
   loginPage = (name, enterIsDisabled) => (
     <div className="login-box">
       <div className="login-input">
-        <span>Username:</span>
-        <input
+        <span>Username: </span>
+        <Form.Control
           value={ name }
           data-testid="login-name-input"
           onChange={ this.onUsernameChange }
         />
       </div>
-      <button
+      <Button
         data-testid="login-submit-button"
         type="button"
         disabled={ enterIsDisabled }
         onClick={ this.createUserAndRedirect }
       >
         Entrar
-      </button>
+      </Button>
     </div>
   );
 
   render() {
     const { name, enterIsDisabled, isLoading, goToSearch } = this.state;
     return (
-      <div className="page-login" data-testid="page-login">
+      <div className="page-login center" data-testid="page-login">
         { isLoading ? <Loading /> : this.loginPage(name, enterIsDisabled) }
         { goToSearch ? <Redirect to="/search" /> : '' }
       </div>

@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import { AiOutlineStar } from 'react-icons/ai';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 
 class MusicCard extends Component {
   render() {
@@ -7,20 +9,23 @@ class MusicCard extends Component {
     return (
       <div className="music-card">
         <span>{ trackName }</span>
-        <audio data-testid="audio-component" src={ previewUrl } controls>
-          <track kind="captions" />
-          O seu navegador não suporta o elemento audio.
-        </audio>
-        <label htmlFor={ trackId }>
-          <input
+        <div className="music-player">
+          <audio data-testid="audio-component" src={ previewUrl } controls>
+            <track kind="captions" />
+            O seu navegador não suporta o elemento audio.
+          </audio>
+          <ToggleButton
             id={ trackId }
             type="checkbox"
             data-testid={ `checkbox-music-${trackId}` }
+            className="music-player-favorite rounded-circle"
+            variant="outline-primary"
             checked={ favorite }
             onChange={ onFavoriteChange }
-          />
-          Favorita
-        </label>
+          >
+            <AiOutlineStar />
+          </ToggleButton>
+        </div>
       </div>
     );
   }

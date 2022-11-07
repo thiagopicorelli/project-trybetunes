@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import Loading from './Loading';
 import searchAlbumsApi from '../services/searchAlbumsAPI';
 
@@ -53,38 +55,37 @@ class Search extends Component {
   };
 
   searchPage = (artist, searchIsDisabled) => (
-    <div className="search-box">
-      <input
+    <div className="search-box center">
+      <Form.Control
         value={ artist }
         data-testid="search-artist-input"
         onChange={ this.onInputChange }
       />
-      <button
-        type="button"
+      <Button
         data-testid="search-artist-button"
         disabled={ searchIsDisabled }
         onClick={ this.searchAlbum }
       >
         Pesquisar
-      </button>
+      </Button>
     </div>
   );
 
   albumElement = (album) => (
-    <div key={ album.collectionId }>
-      <Link
-        data-testid={ `link-to-album-${album.collectionId}` }
-        to={ `/album/${album.collectionId}` }
-      >
+    <Link
+      data-testid={ `link-to-album-${album.collectionId}` }
+      to={ `/album/${album.collectionId}` }
+    >
+      <div key={ album.collectionId } className="albums-list-element">
+        <img alt={ album.collectionName } src={ album.artworkUrl100 } />
         { album.collectionName }
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 
   albumsSection = (albumsArtist, albums) => (
     <div className="albums-section">
-      <span>{ `Resultado de álbuns de: ${albumsArtist}` }</span>
-
+      <span>{ `Resultado de álbuns de: ${albumsArtist}\n` }</span>
       <div className="albums-list">
         { albums.length > 0
           ? albums.map((album) => this.albumElement(album))
@@ -103,7 +104,7 @@ class Search extends Component {
       isLoading,
     } = this.state;
     return (
-      <div data-testid="page-search">
+      <div data-testid="page-search" className="page-search center">
         { isLoading ? <Loading /> : this.searchPage(artist, searchIsDisabled) }
         { isSearched ? this.albumsSection(albumsArtist, albums) : '' }
       </div>

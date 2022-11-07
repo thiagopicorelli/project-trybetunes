@@ -32,11 +32,20 @@ class Profile extends Component {
   profilePage = () => {
     const { name, email, image, description } = this.state;
     return (
-      <div className="page-profile">
-        <img alt={ name } src={ image } data-testid="profile-image" />
-        <p>{ name }</p>
-        <p>{ email }</p>
-        <p>{ description }</p>
+      <div className="page-profile center">
+        <div className="page-profile-user">
+          <img
+            alt={ name }
+            src={ image }
+            data-testid="profile-image"
+            className="user-image-big"
+          />
+          <div className="page-profile-user-text">
+            <span>{ name }</span>
+            <span>{ email }</span>
+            <span>{ description }</span>
+          </div>
+        </div>
         <Link to="/profile/edit">Editar perfil</Link>
       </div>
     );

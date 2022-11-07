@@ -15,6 +15,7 @@ class Album extends Component {
     this.state = {
       artistName: '',
       albumName: '',
+      albumImage: '',
       musicCards: [],
       isLoading: true,
     };
@@ -53,6 +54,7 @@ class Album extends Component {
         ...prevState,
         artistName: collection.artistName,
         albumName: collection.collectionName,
+        albumImage: collection.artworkUrl100,
         musicCards: this.musicCardsCreator(),
         isLoading: false,
       }));
@@ -92,12 +94,13 @@ class Album extends Component {
   };
 
   albumPage = () => {
-    const { musicCards, artistName, albumName } = this.state;
+    const { musicCards, artistName, albumName, albumImage } = this.state;
     return (
       <div className="page-album">
         <div className="artist">
+          <img className="album-image-big" src={ albumImage } alt={ artistName } />
           <h2 data-testid="artist-name">{ artistName }</h2>
-          <h3 data-testid="album-name">{ albumName }</h3>
+          <span data-testid="album-name">{ albumName }</span>
         </div>
 
         <div className="music-card-list">
