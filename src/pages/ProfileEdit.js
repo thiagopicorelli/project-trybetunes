@@ -27,7 +27,7 @@ class ProfileEdit extends Component {
         image,
         description,
         isLoading: false,
-      }), () => {this.checkLegalInput();});
+      }), () => { this.checkLegalInput(); });
     });
   }
 
